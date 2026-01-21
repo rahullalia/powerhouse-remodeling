@@ -56,6 +56,70 @@ export default function SimplePage() {
             </div>
           </div>
 
+          <div className="mb-10">
+            <h3 className="text-xl font-bold text-gray-900 mb-6">What Our Customers Say</h3>
+
+            {/* Stats Row */}
+            <div className="grid grid-cols-3 gap-2 mb-8">
+              <div className="bg-orange-50 rounded-lg p-3 text-center">
+                <div className="text-xl font-bold text-orange-600">500+</div>
+                <div className="text-xs text-gray-600 font-medium leading-tight">Projects</div>
+              </div>
+              <div className="bg-orange-50 rounded-lg p-3 text-center">
+                <div className="text-xl font-bold text-orange-600">13+</div>
+                <div className="text-xs text-gray-600 font-medium leading-tight">Years</div>
+              </div>
+              <div className="bg-orange-50 rounded-lg p-3 text-center">
+                <div className="text-xl font-bold text-orange-600">5.0</div>
+                <div className="text-xs text-gray-600 font-medium leading-tight">Rating</div>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              {[
+                {
+                  id: 1,
+                  name: "Sarah M.",
+                  text: "Jr. and his team transformed our outdated bathroom in just 4 days! The quality of work exceeded our expectations.",
+                  rating: 5
+                },
+                {
+                  id: 2,
+                  name: "Michael R.",
+                  text: "Professional from start to finish. They showed up on time, kept the workspace clean, and delivered exactly what they promised.",
+                  rating: 5
+                },
+                {
+                  id: 3,
+                  name: "Jennifer L.",
+                  text: "The $5,000 special was exactly what we needed. Done in 5 days as promised!",
+                  rating: 5
+                }
+              ].map((review) => (
+                <div key={review.id} className="bg-gray-50 p-4 rounded-xl text-sm">
+                  <div className="flex text-yellow-400 mb-2 text-xs">{"★".repeat(review.rating)}</div>
+                  <p className="text-gray-700 italic mb-2">&ldquo;{review.text}&rdquo;</p>
+                  <p className="font-bold text-gray-900 text-xs">— {review.name}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="mb-8 text-center bg-gray-900 text-white rounded-xl p-6">
+            <h3 className="text-xl font-bold mb-2">Ready to Start?</h3>
+            <p className="text-gray-400 text-sm mb-4">Get your free quote today.</p>
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className="inline-block w-full bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-lg font-bold transition-colors"
+            >
+              Get Free Quote
+            </a>
+          </div>
+
           <div className="mt-auto pt-8 border-t border-gray-100 text-sm text-gray-400">
             <div className="flex gap-4">
               <span>Need help? Call us.</span>
