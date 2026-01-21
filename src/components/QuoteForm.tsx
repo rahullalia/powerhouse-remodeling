@@ -11,11 +11,20 @@ export default function QuoteForm() {
     projectType: "",
     timeline: "",
     zipCode: "",
+    website: "", // Honeypot field
   });
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Honeypot check: if website is filled, it's a bot
+    if (formData.website) {
+      // Fake success to fool the bot
+      setStatus("success");
+      return;
+    }
+
     setStatus("submitting");
 
     try {
@@ -35,6 +44,7 @@ export default function QuoteForm() {
           projectType: "",
           timeline: "",
           zipCode: "",
+          website: "",
         });
       } else {
         setStatus("error");
@@ -84,6 +94,18 @@ export default function QuoteForm() {
         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
         className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-orange-500"
       />
+
+      {/* Honeypot Field - Hidden from humans */}
+      <input
+        type="text"
+        name="website"
+        value={formData.website}
+        onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+        style={{ display: 'none' }}
+        tabIndex={-1}
+        autoComplete="off"
+      />
+
       <input
         type="tel"
         placeholder="Phone Number"
@@ -98,37 +120,41 @@ export default function QuoteForm() {
         onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
         className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:border-orange-500"
       >
-        <option value="">What project are you interested in?</option>
-        <option value="bathroom">Bathroom Remodel</option>
-        <option value="roofing">Roofing</option>
-        <option value="painting">Exterior Painting</option>
-        <option value="flooring">Flooring</option>
-        <option value="other">Other</option>
+        <option value="" disabled className="text-gray-500">Select Project Type</option>
+        <option value="Complete Bathroom Remodel">Complete Bathroom Remodel</option>
+        <option value="Shower Replacement">Shower Replacement</option>
+        <option value="Tub to Shower Conversion">Tub to Shower Conversion</option>
+        <option value="Walk-in Tub">Walk-in Tub</option>
+        <option value="Other">Other</option>
       </select>
-      <select
-        required
-        value={formData.timeline}
-        onChange={(e) => setFormData({ ...formData, timeline: e.target.value })}
-        className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:border-orange-500"
-      >
-        <option value="">When do you want to start?</option>
-        <option value="asap">As soon as possible</option>
-        <option value="1-2weeks">Within 1-2 weeks</option>
-        <option value="1month">Within a month</option>
-        <option value="flexible">Flexible timeline</option>
-      </select>
-      <input
-        type="text"
-        placeholder="Zip Code"
-        required
-        value={formData.zipCode}
-        onChange={(e) => setFormData({ ...formData, zipCode: e.target.value })}
-        className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-orange-500"
-      />
+
+      <div className="grid grid-cols-2 gap-4">
+        <input
+          type="text"
+          placeholder="Zip Code"
+          required
+          maxLength={5}
+          value={formData.zipCode}
+          onChange={(e) => setFormData({ ...formData, zipCode: e.target.value })}
+          className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-orange-500"
+        />
+        <select
+          required
+          value={formData.timeline}
+          onChange={(e) => setFormData({ ...formData, timeline: e.target.value })}
+          className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:border-orange-500"
+        >
+          <option value="" disabled>Timeline</option>
+          <option value="Immediately">Immediately</option>
+          <option value="1-3 Months">1-3 Months</option>
+          <option value="3+ Months">3+ Months</option>
+        </select>
+      </div>
+
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="w-full bg-orange-500 hover:bg-orange-600 disabled:bg-orange-400 text-white py-4 rounded-lg text-lg font-semibold transition-colors"
+        className="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-4 rounded-lg transition-colors disabled:opacity-50 mt-2"
       >
         {status === "submitting" ? "Submitting..." : "Get My Free Quote"}
       </button>
