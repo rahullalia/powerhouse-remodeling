@@ -77,30 +77,36 @@ export default function SimplePage() {
               </div>
             </div>
 
-            <div className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {[
                 {
                   id: 1,
-                  name: "Sarah M.",
-                  text: "Jr. and his team transformed our outdated bathroom in just 4 days! The quality of work exceeded our expectations.",
+                  name: "Denise Dreyer",
+                  text: "Couldn't be happier with this company. Jr. was very responsive and took all my needs into consideration... His team was wonderful, very efficient, cleaned up every day after work and very kind! If you're considering remodel... reach out to them!!",
                   rating: 5
                 },
                 {
                   id: 2,
-                  name: "Michael R.",
-                  text: "Professional from start to finish. They showed up on time, kept the workspace clean, and delivered exactly what they promised.",
+                  name: "Lucina Chavez",
+                  text: "Power House Remodeling is a phenomenal company... Guillermo attention to detail, transparency, and communication was impeccable! Their team works incredibly fast, was always on time, and finished ahead of schedule.",
                   rating: 5
                 },
                 {
                   id: 3,
-                  name: "Jennifer L.",
-                  text: "The $5,000 special was exactly what we needed. Done in 5 days as promised!",
+                  name: "Randy Miller",
+                  text: "Had a bathtub/shower installation done. Gio's crew did a fantastic job. They were very professional and always left their work area clean and tidy... Very reasonably priced, and Junior was very easy to work with.",
+                  rating: 5
+                },
+                {
+                  id: 4,
+                  name: "Nick Ramos",
+                  text: "The job was done perfectly and professionally... Guillermo went above and beyond keeping us up to date and informing us on dates of arrival... Being out of town Power House made this process worry free!",
                   rating: 5
                 }
               ].map((review) => (
-                <div key={review.id} className="bg-gray-50 p-4 rounded-xl text-sm">
-                  <div className="flex text-yellow-400 mb-2 text-xs">{"★".repeat(review.rating)}</div>
-                  <p className="text-gray-700 italic mb-2">&ldquo;{review.text}&rdquo;</p>
+                <div key={review.id} className="bg-gray-50 p-4 rounded-xl text-sm h-full flex flex-col">
+                  <div className="flex text-yellow-500 mb-2 text-xs">{"★".repeat(review.rating)}</div>
+                  <p className="text-gray-700 italic mb-3 flex-grow leading-relaxed">&ldquo;{review.text}&rdquo;</p>
                   <p className="font-bold text-gray-900 text-xs">— {review.name}</p>
                 </div>
               ))}
