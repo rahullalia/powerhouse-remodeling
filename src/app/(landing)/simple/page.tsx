@@ -36,6 +36,21 @@ export default function SimplePage() {
             ))}
           </ul>
 
+          <div className="mb-10">
+            <h3 className="text-xl font-bold text-gray-900 mb-4">Recent Transformations</h3>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+              {[1, 2, 3, 4, 5, 6].map((num) => (
+                <div key={num} className="relative aspect-square overflow-hidden rounded-lg bg-gray-100">
+                  <img
+                    src={`/images/gallery/${num}.jpg`}
+                    alt={`Bathroom remodel transformation ${num}`}
+                    className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
           <div className="mt-auto pt-8 border-t border-gray-100 text-sm text-gray-400">
             <div className="flex gap-4">
               <span>Need help? Call us.</span>
