@@ -120,7 +120,10 @@ export default function SimplePage() {
               href="#"
               onClick={(e) => {
                 e.preventDefault();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                const form = document.getElementById('quote-form');
+                if (form) {
+                  form.scrollIntoView({ behavior: 'smooth' });
+                }
               }}
               className="inline-block w-full bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-lg font-bold transition-colors"
             >
@@ -130,7 +133,7 @@ export default function SimplePage() {
 
           <div className="mt-auto pt-8 border-t border-gray-100 text-sm text-gray-400">
             <div className="flex gap-4">
-              <span>Need help? Call us.</span>
+              <span></span>
               <Link href="https://phoenixremodelingaz.com/privacy" className="underline hover:text-gray-600" target="_blank" rel="noopener noreferrer">Privacy Policy</Link>
             </div>
             <div className="mt-2">
@@ -140,7 +143,7 @@ export default function SimplePage() {
         </div>
 
         {/* Right Column: Form */}
-        <div className="w-full md:w-1/2 bg-gray-900 p-8 md:p-12 lg:p-16 flex flex-col justify-center text-white">
+        <div id="quote-form" className="w-full md:w-1/2 bg-gray-900 p-8 md:p-12 lg:p-16 flex flex-col justify-center text-white">
           <div className="max-w-md mx-auto w-full">
             <h2 className="text-3xl font-bold mb-2">Get Your Free Quote</h2>
             <p className="text-gray-400 mb-8">
