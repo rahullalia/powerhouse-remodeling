@@ -9,6 +9,11 @@ export default function SimplePage() {
         {/* Left Column: Content */}
         <div className="w-full md:w-1/2 p-8 md:p-12 lg:p-16 flex flex-col justify-center bg-white">
           <div className="mb-8">
+            <img
+              src="/logo.jpg"
+              alt="Powerhouse Remodeling Logo"
+              className="h-16 w-auto mb-8"
+            />
             <span className="inline-block px-4 py-1.5 rounded-full bg-orange-100 text-orange-700 font-bold text-sm tracking-wide uppercase mb-6">
               Limited Time Special
             </span>
