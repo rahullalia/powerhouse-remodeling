@@ -60,12 +60,33 @@ export default function QuoteForm() {
 
   if (status === "success") {
     return (
-      <div className="text-center py-8">
-        <div className="text-5xl mb-4">✓</div>
-        <h3 className="text-2xl font-bold mb-2">Thank You!</h3>
-        <p className="text-gray-400">
-          We&apos;ll contact you within 24 hours to discuss your project.
+      <div className="text-center py-12">
+        <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
+          <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+        <h3 className="text-3xl font-bold mb-3">Thank You!</h3>
+        <p className="text-gray-400 text-lg mb-6">
+          Your quote request has been received.
         </p>
+        <div className="bg-gray-800 rounded-lg p-4 text-left">
+          <p className="text-orange-400 font-semibold mb-2">What happens next?</p>
+          <ul className="text-gray-300 space-y-2 text-sm">
+            <li className="flex items-start gap-2">
+              <span className="text-orange-500 mt-1">→</span>
+              <span>Our team will review your project details</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-orange-500 mt-1">→</span>
+              <span>We&apos;ll call you within 24 hours</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-orange-500 mt-1">→</span>
+              <span>Schedule your free in-home estimate</span>
+            </li>
+          </ul>
+        </div>
       </div>
     );
   }
