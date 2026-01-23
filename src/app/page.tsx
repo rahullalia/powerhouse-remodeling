@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import QuoteForm from "@/components/QuoteForm";
 import { motion } from "framer-motion";
 
@@ -172,13 +171,7 @@ export default function SimplePage() {
             </motion.div>
 
             <div className="mt-auto pt-8 border-t border-gray-100 text-sm text-gray-400">
-              <div className="flex gap-4">
-                <span></span>
-                <Link href="https://phoenixremodelingaz.com/privacy" className="underline hover:text-gray-600" target="_blank" rel="noopener noreferrer">Privacy Policy</Link>
-              </div>
-              <div className="mt-2">
-                © {new Date().getFullYear()} Powerhouse Remodeling LLC
-              </div>
+              © {new Date().getFullYear()} Powerhouse Remodeling LLC
             </div>
           </motion.div>
         </div>
