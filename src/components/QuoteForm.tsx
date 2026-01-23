@@ -8,8 +8,10 @@ export default function QuoteForm() {
     lastName: "",
     email: "",
     phone: "",
+    homeownerStatus: "",
     projectType: "",
     timeline: "",
+    budget: "",
     zipCode: "",
     website: "", // Honeypot field
   });
@@ -41,8 +43,10 @@ export default function QuoteForm() {
           lastName: "",
           email: "",
           phone: "",
+          homeownerStatus: "",
           projectType: "",
           timeline: "",
+          budget: "",
           zipCode: "",
           website: "",
         });
@@ -116,40 +120,64 @@ export default function QuoteForm() {
       />
       <select
         required
+        value={formData.homeownerStatus}
+        onChange={(e) => setFormData({ ...formData, homeownerStatus: e.target.value })}
+        className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:border-orange-500"
+      >
+        <option value="" disabled>Are you the homeowner?</option>
+        <option value="owner">Yes, I own this home</option>
+        <option value="renter">No, I&apos;m renting</option>
+        <option value="buying">I&apos;m buying soon</option>
+      </select>
+      <select
+        required
         value={formData.projectType}
         onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
         className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:border-orange-500"
       >
-        <option value="" disabled className="text-gray-500">Select Project Type</option>
-        <option value="Complete Bathroom Remodel">Complete Bathroom Remodel</option>
-        <option value="Shower Replacement">Shower Replacement</option>
-        <option value="Tub to Shower Conversion">Tub to Shower Conversion</option>
-        <option value="Walk-in Tub">Walk-in Tub</option>
-        <option value="Other">Other</option>
+        <option value="" disabled>What bathroom project?</option>
+        <option value="complete_remodel">Complete Bathroom Remodel</option>
+        <option value="shower_replacement">Shower Replacement</option>
+        <option value="tub_to_shower">Tub to Shower Conversion</option>
+        <option value="walkin_tub">Walk-in Tub Installation</option>
+        <option value="bathtub_replacement">Bathtub Replacement</option>
+        <option value="other">Other</option>
       </select>
 
-      <div className="grid grid-cols-2 gap-4">
-        <input
-          type="text"
-          placeholder="Zip Code"
-          required
-          maxLength={5}
-          value={formData.zipCode}
-          onChange={(e) => setFormData({ ...formData, zipCode: e.target.value })}
-          className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-orange-500"
-        />
-        <select
-          required
-          value={formData.timeline}
-          onChange={(e) => setFormData({ ...formData, timeline: e.target.value })}
-          className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:border-orange-500"
-        >
-          <option value="" disabled>Timeline</option>
-          <option value="Immediately">Immediately</option>
-          <option value="1-3 Months">1-3 Months</option>
-          <option value="3+ Months">3+ Months</option>
-        </select>
-      </div>
+      <select
+        required
+        value={formData.timeline}
+        onChange={(e) => setFormData({ ...formData, timeline: e.target.value })}
+        className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:border-orange-500"
+      >
+        <option value="" disabled>When do you want to start?</option>
+        <option value="2_weeks">Within 2 weeks</option>
+        <option value="30_days">Within 30 days</option>
+        <option value="1_3_months">1-3 months</option>
+        <option value="researching">Just researching</option>
+      </select>
+      <select
+        required
+        value={formData.budget}
+        onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
+        className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:border-orange-500"
+      >
+        <option value="" disabled>Estimated budget?</option>
+        <option value="under_3k">Under $3,000</option>
+        <option value="3k_5k">$3,000 - $5,000</option>
+        <option value="5k_10k">$5,000 - $10,000</option>
+        <option value="10k_plus">$10,000+</option>
+        <option value="not_sure">Not sure yet</option>
+      </select>
+      <input
+        type="text"
+        placeholder="Zip Code (e.g., 85035)"
+        required
+        maxLength={5}
+        value={formData.zipCode}
+        onChange={(e) => setFormData({ ...formData, zipCode: e.target.value })}
+        className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-orange-500"
+      />
 
       <button
         type="submit"
